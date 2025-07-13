@@ -57,3 +57,6 @@ This modular design allows for easy extension and customization of each componen
     - Enter your query in the text field.
     - `session_id` has additionally been added to preserve user's context that is to maintain user's history.
     - The system retrieves relevant context and generates an answer, with appropriate format.
+
+4. **Video Demonstration Link**
+- https://drive.google.com/file/d/17C4ApwLR4Kmy5WJ-WG7nBFZPSyoXq3Pf/view?usp=sharing
