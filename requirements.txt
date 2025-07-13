@@ -1,0 +1,11 @@
+pypdf
+langchain
+langchain-community
+langchain-chroma
+pytest
+boto3
+quart
+hypercorn
+python-dotenv
+openai
+langchain-openai
