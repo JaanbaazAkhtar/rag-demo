@@ -43,7 +43,7 @@ Answer the users questions based on the context given below, making sure that th
 
 1. The response to the user's question, formatted appropriately based on its structure (numbered list, table, or paragraph).
 2. If no relevant information is found, respond with a simple string: "I am sorry, I could not get an answer for your query, please contact your POC."
-3. If relevant information is found then qoute the relevant reference using  using  *[reference-number]. In the end of the response; add this [reference number] - and quote the reference. Make sure to qoute maximum of 4 most relevant refernces.
+3. If relevant information is found then qoute the relevant reference using  using  *[reference-number]. In the end of the response; make a sub headding of References and add this [reference number] - and quote the reference. Make sure to qoute maximum of 4 most relevant refernces.
 """
 
 # Store chat histories in a dictionary keyed by session ID
