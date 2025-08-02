@@ -1,9 +1,13 @@
 import os
+from app.emailFInder import return_valid
 from quart import Quart, request, jsonify
 from werkzeug.utils import secure_filename
 from .populate_database import main as populate_main, clear_database
 from .query_data import query_rag
 from dotenv import load_dotenv
+from mailscout import Scout
+# scout = Scout()
+from emailfinder.extractor import *
 
 load_dotenv()
 
@@ -61,5 +65,37 @@ def setup_routes(app: Quart):
         try:
             clear_database()
             return jsonify({"success": True, "message": "Database reset successfully"}), 200
+        except Exception as e:
+            return jsonify({"success": False, "error": str(e)}), 500
+
+    @app.route('/email', methods=['GET'])
+    async def email():
+        # data = await request.json
+        scout = Scout()
+        # email_address = data.get('email')
+        names = ["areeb khan"]
+        # or, names = ["Batuhan Akyazı"]
+        domain = "technopine.com"
+
+        emails = scout.find_valid_emails(domain, names)
+
+        print(emails)
+        if not emails:
+            return jsonify({"error": "Email address is required"}), 400
+        try:
+            # scout.email(emails[0])
+            return jsonify({"success": True, "data": emails}), 200
+        except Exception as e:
+            return jsonify({"success": False, "error": str(e)}), 500
+        
+    @app.route('/find-emails', methods=['GET'])
+    async def find_emails():
+        try:
+            emails = return_valid()
+            print(emails)
+            return jsonify({
+                "success": True,
+                "emails": emails
+            }), 200
         except Exception as e:
             return jsonify({"success": False, "error": str(e)}), 500
